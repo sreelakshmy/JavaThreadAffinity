@@ -3,6 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="tst"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="lib" path="/home/h1dd3ntru7h/OS/ThreadAffinity/src/src/com/threads/jna.jar"/>
+	<classpathentry kind="lib" path="/home/swe0523/OSproject/jna.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

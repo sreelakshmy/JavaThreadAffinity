@@ -10,23 +10,6 @@ public class ThreadAffinity {
 	public CTest ctest;
 
 	public ThreadAffinity() {
-		 // Directory path here
-		  String path = "."; 
-		 
-		  String files;
-		  File folder = new File(path);
-		  File[] listOfFiles = folder.listFiles(); 
-		 
-		  for (int i = 0; i < listOfFiles.length; i++) 
-		  {
-		 
-		   if (listOfFiles[i].isFile()) 
-		   {
-		   files = listOfFiles[i].getName();
-		   System.out.println(files);
-		      }
-		  }
-		
 		System.out.println(System.getProperty("user.dir"));
 		ctest = (CTest) Native.loadLibrary("ctest", CTest.class);
 	}
@@ -63,7 +46,7 @@ public class ThreadAffinity {
     // #TODO : how to throw only ThreadAffinityException
     static public void main(String argv[]) throws Exception {
     	ThreadAffinity t = new ThreadAffinity();
-    	t.setaffinity(10, 11);
-    	t.getaffinity(10, 11);
+    	t.setaffinity(2536, 11);
+    	t.getaffinity(2536, 11);
     }
 }

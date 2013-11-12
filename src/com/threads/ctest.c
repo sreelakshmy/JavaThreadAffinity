@@ -17,7 +17,7 @@ int _setaffinity(int pid, int cpusetsize) {
   //CPU_ZERO(&mask);
   CPU_SET(0, &mask);
   CPU_SET(2, &mask);
-  result = sched_setaffinity(0, sizeof(mask), &mask);
+  result = sched_setaffinity(pid, sizeof(mask), &mask);
   /*
    * returns 0 if success, else returns -1 with ERRNO set
    */
@@ -47,7 +47,7 @@ int _getaffinity(int pid, int cpusetsize) {
   //CPU_ZERO(&mask);
   CPU_SET(0, &mask);
   CPU_SET(2, &mask);
-  result = sched_getaffinity(0, sizeof(mask), &mask);
+  result = sched_getaffinity(pid, sizeof(mask), &mask);
 
   return result;
 }
