@@ -4,14 +4,14 @@
 #include <sched.h>
 
 void helloFromC(long x) {
-    printf("Hello from C! = %ld\n", x);
+  printf("Hello from C! = %ld\n", x);
 }
 
 
 int _setaffinity(int pid, int cpusetsize) {
-    int result;
+  int result;
   printf("Making call to sched_setaffinity with arguments (pid=%d, cpusetsize=%d)\n",
-         pid, cpusetsize);
+      pid, cpusetsize);
 
   cpu_set_t  mask;
   //CPU_ZERO(&mask);
@@ -40,9 +40,9 @@ int _setaffinity(int pid, int cpusetsize) {
 }
 
 int _getaffinity(int pid, int cpusetsize) {
-    int result;
+  int result;
   printf("Making call to sched_getaffinity with arguments (pid=%d, cpusetsize=%d)\n",
-         pid, cpusetsize);
+      pid, cpusetsize);
   cpu_set_t  mask;
   //CPU_ZERO(&mask);
   CPU_SET(0, &mask);
