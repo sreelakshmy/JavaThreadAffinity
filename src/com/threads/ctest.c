@@ -1,5 +1,7 @@
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <errno.h>
+#include <sched.h>
 
 void helloFromC(long x) {
     printf("Hello from C! = %ld\n", x);
@@ -7,8 +9,15 @@ void helloFromC(long x) {
 
 
 int _setaffinity(int pid, int cpusetsize) {
+    int result;
   printf("Making call to sched_setaffinity with arguments (pid=%d, cpusetsize=%d)\n",
          pid, cpusetsize);
+
+  cpu_set_t  mask;
+  //CPU_ZERO(&mask);
+  CPU_SET(0, &mask);
+  CPU_SET(2, &mask);
+  result = sched_setaffinity(0, sizeof(mask), &mask);
   /*
    * returns 0 if success, else returns -1 with ERRNO set
    */
@@ -31,7 +40,14 @@ int _setaffinity(int pid, int cpusetsize) {
 }
 
 int _getaffinity(int pid, int cpusetsize) {
+    int result;
   printf("Making call to sched_getaffinity with arguments (pid=%d, cpusetsize=%d)\n",
          pid, cpusetsize);
-  return 0;
+  cpu_set_t  mask;
+  //CPU_ZERO(&mask);
+  CPU_SET(0, &mask);
+  CPU_SET(2, &mask);
+  result = sched_getaffinity(0, sizeof(mask), &mask);
+
+  return result;
 }

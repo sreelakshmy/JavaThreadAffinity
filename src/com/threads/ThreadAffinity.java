@@ -1,5 +1,7 @@
 package com.threads;
 
+import java.io.File;
+
 import com.threads.ThreadAffinityException;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
@@ -8,6 +10,24 @@ public class ThreadAffinity {
 	public CTest ctest;
 
 	public ThreadAffinity() {
+		 // Directory path here
+		  String path = "."; 
+		 
+		  String files;
+		  File folder = new File(path);
+		  File[] listOfFiles = folder.listFiles(); 
+		 
+		  for (int i = 0; i < listOfFiles.length; i++) 
+		  {
+		 
+		   if (listOfFiles[i].isFile()) 
+		   {
+		   files = listOfFiles[i].getName();
+		   System.out.println(files);
+		      }
+		  }
+		
+		System.out.println(System.getProperty("user.dir"));
 		ctest = (CTest) Native.loadLibrary("ctest", CTest.class);
 	}
 
@@ -19,7 +39,7 @@ public class ThreadAffinity {
 
     private void process_retval(int retval) throws Exception {
     	if ( retval == 0 )
-    		return;
+        	System.out.println("Operation successful");
     	else if ( retval == 1 )
     		throw new ThreadAffinityException("Supplied memory address was invalid");
     	else if ( retval == 2 )
