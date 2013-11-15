@@ -68,3 +68,7 @@ masks[9] = 1;
 int _getcpu() {
   return sched_getcpu();
 }
+
+int _getpid() {
+  return getpid();
+}
