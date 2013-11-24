@@ -3,7 +3,7 @@
 #include <errno.h>
 #include <sched.h>
 
-int _setaffinity(int pid, int n, int *masks) {
+int _setaffinity_process(int pid, int n, int *masks) {
   int i;
   int retval=0;
 
@@ -27,6 +27,34 @@ int _setaffinity(int pid, int n, int *masks) {
   else if (errno == ESRCH)
     return 4;
 }
+
+// http://stackoverflow.com/questions/20030070/java-processes-vs-threads-for-thread-affinity/20030694?noredirect=1#20030694
+int _setaffinity(int n, int *masks) {
+  int i;
+  int retval=0;
+
+  printf("DEBUG: Making call to sched_setaffinity with arguments pid=%d\n", pid);
+  cpu_set_t  mask;
+
+  CPU_ZERO(&mask);
+  for(i=0;i<n;i++)
+    CPU_SET(masks[i], &mask);
+
+  pthread_t tid = pthread_self();
+  retval = pthread_setaffinity_np(tid, sizeof(cpu_set_t), &mask);
+  if ( retval == 0 )
+    return 0;
+
+  if (errno == EFAULT)
+    return 1;
+  else if (errno == EINVAL)
+    return 2;
+  else if (errno == EPERM)
+    return 3;
+  else if (errno == ESRCH)
+    return 4;
+}
+
 
 int _getaffinity(int pid, int n, int *masks) {
   int i;
