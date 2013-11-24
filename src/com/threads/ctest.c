@@ -29,6 +29,7 @@ int _setaffinity_process(int pid, int n, int *masks) {
 }
 
 // http://stackoverflow.com/questions/20030070/java-processes-vs-threads-for-thread-affinity/20030694?noredirect=1#20030694
+// http://stackoverflow.com/questions/6372102/what-is-the-difference-between-pthread-self-and-gettid-which-one-should-i-u?rq=1
 int _setaffinity(int n, int *masks) {
   int i;
   int retval=0;
