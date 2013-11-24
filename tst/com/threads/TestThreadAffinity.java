@@ -8,7 +8,9 @@ public class TestThreadAffinity {
 	@Test
 	public void test() throws Exception {
     	ThreadAffinity t = new ThreadAffinity();
-    	t.setaffinity(2536, 11);
-    	t.getaffinity(2536, 11);
+    	int cores[] = {2};
+    	t.setaffinity(0, cores.length, cores);    	
+    	System.out.println("Hello " + t.sched_getcpu());
+    	System.out.println("The current process id is " + t._getpid());
 	}
 }

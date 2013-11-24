@@ -72,3 +72,9 @@ int _getcpu() {
 int _getpid() {
   return getpid();
 }
+
+unsigned int _gettid() {
+  unsigned int x = (unsigned int)pthread_self();
+  printf("From C we have %d", x);
+  return (unsigned int)pthread_self();
+}
