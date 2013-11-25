@@ -16,7 +16,8 @@ public class ThreadAffinity {
 	// Interface for CTest
     public interface CTest extends Library {
         public void helloFromC(long i);
-        public int _setaffinity(int tid, int size, int[] a);
+        public int _setaffinity(int size, int[] a);
+        public int _setaffinity_process(int pid, int size, int[] a);
         public int _getaffinity(int tid, int cpusetsize);
         public int _getcpu();
         public int _getpid();
@@ -55,8 +56,13 @@ public class ThreadAffinity {
     }
 
     // Method to set the affinity of a process
-    public void setaffinity(int tid, int size, int[] a) throws Exception {
-    	int retval = ctest._setaffinity(tid, size, a);
+    public void setaffinity(int size, int[] a) throws Exception {
+    	int retval = ctest._setaffinity(size, a);
+    	process_retval(retval);
+    }
+    
+    public void setaffinity_process(int pid, int size, int[] a) throws Exception {
+    	int retval = ctest._setaffinity_process(pid, size, a);
     	process_retval(retval);
     }
 

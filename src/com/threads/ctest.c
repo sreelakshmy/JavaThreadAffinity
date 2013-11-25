@@ -34,15 +34,16 @@ int _setaffinity(int n, int *masks) {
   int i;
   int retval=0;
 
-  printf("DEBUG: Making call to sched_setaffinity with arguments pid=%d\n", pid);
+  /*printf("DEBUG: Making call to sched_setaffinity with arguments pid=%d\n", pid);*/
   cpu_set_t  mask;
 
   CPU_ZERO(&mask);
   for(i=0;i<n;i++)
     CPU_SET(masks[i], &mask);
 
-  pthread_t tid = pthread_self();
-  retval = pthread_setaffinity_np(tid, sizeof(cpu_set_t), &mask);
+  /*pthread_t tid = pthread_self();*/
+  /*retval = pthread_setaffinity_np(tid, sizeof(cpu_set_t), &mask);*/
+  retval = pthread_setaffinity_np(pthread_self(), sizeof(cpu_set_t), &mask);
   if ( retval == 0 )
     return 0;
 
