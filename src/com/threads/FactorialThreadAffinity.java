@@ -21,11 +21,11 @@ public class FactorialThreadAffinity implements Runnable{
 			// Set the current thread to the cores specified in `processors`
 			t.setaffinity_thread(0, this.processors.length, this.processors);
 			
-			for ( int i = 1; i < this.n; i++ ) {
+			for ( int i = 1; i <= this.n; i++ ) {
 				f *= i;
 				System.out.println("computing factorial of " + this.n + " on core " + t.sched_getcpu());
 			}
-			System.out.println("[+] For thread " + currThread.getName() + " the cpu is " + t.sched_getcpu() + " the factorial is " + f);
+			System.out.println("[+] For thread " + currThread.getName() + " the cpu is " + t.sched_getcpu() + " the factorial of " + this.n + " is " + f);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
