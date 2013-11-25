@@ -15,16 +15,10 @@ Step:2
     Run the C program using the following command,
     
           $ gcc -fPIC -o libctest.so -shared ctest.c
-          
-Step:3
 
-    To compile and run Java file, run the following commnads.
-    
-          $ javac -classpath jna-4.0.0.jar HelloWorld.java java -classpath jna-4.0.0.jar:. HelloWorld
+    Alternatively, you can run
+          $ ./compile.sh
           
-    PS: Replace HelloWorld.java with your Java file.
-    
-
 b) Running the code in Eclipse :
 
 Step 1:
@@ -37,14 +31,12 @@ Step 2:
     
 Step 3:
 
-    Add both, the class path and directory path of the jna.jar file in your workspace.
+    Change the buildpath and classpath to point to jna.jar
 
 Step 4:
-
-    Run the compile.sh file to create the shared object.
-    
-                  $ ./compile.sh
-
-Step 5:
       
-      Then build and run the program.
+      Build and run the following files to see thread affinity in action
+:-
+      ThreadAffinityBasicUser.java
+      ThreadAffinityMultiUser.java
+      FactorialThreadAffinity.java
