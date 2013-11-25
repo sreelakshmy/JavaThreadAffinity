@@ -1,6 +1,5 @@
 package com.threads;
 
-import com.threads.ThreadAffinityException;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
 
@@ -25,13 +24,13 @@ public class ThreadAffinity {
     	if ( retval == 0 ) { }
         	// System.out.println("DEBUG: Operation successful");
     	else if ( retval == 1 )
-    		throw new ThreadAffinityException("Supplied memory address was invalid");
+    		throw new Exception("Supplied memory address was invalid");
     	else if ( retval == 2 )
-    		throw new ThreadAffinityException("cpusetsize is smaller than the size of the affinity mask used by the kernel.");
+    		throw new Exception("cpusetsize is smaller than the size of the affinity mask used by the kernel.");
     	else if ( retval == 3 )
-    		throw new ThreadAffinityException("The calling process does not have appropriate privileges. The caller needs an effective user ID equal to the real user ID or effective user ID of the process identified by pid, or it must possess the CAP_SYS_NICE capability.");
+    		throw new Exception("The calling process does not have appropriate privileges. The caller needs an effective user ID equal to the real user ID or effective user ID of the process identified by pid, or it must possess the CAP_SYS_NICE capability.");
     	else if ( retval == 4 )
-    		throw new ThreadAffinityException("The process whose ID is pid could not be found.");
+    		throw new Exception("The process whose ID is pid could not be found.");
     }
 
     // Method to get the current CPU
