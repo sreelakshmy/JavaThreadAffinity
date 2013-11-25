@@ -16,12 +16,8 @@ public class ThreadAffinity {
 	// Interface for CTest
     public interface CTest extends Library {
         public void helloFromC(long i);
-        public int _setaffinity(int size, int[] a);
         public int _setaffinity_thread(int pid, int size, int[] a);
-        public int _getaffinity(int tid, int cpusetsize);
         public int _getcpu();
-        public int _getpid();
-        public int _gettid();
     }
 
     // Method to process the return value
@@ -44,35 +40,8 @@ public class ThreadAffinity {
     	return retval;
     }
 
-    // Method to get the current process id
-    public int _getpid() throws Exception {
-    	int retval = ctest._getpid();
-    	return retval;
-    }
-    
-    public int _gettid() throws Exception {
-    	int retval = ctest._gettid();
-    	return retval;
-    }
-
-    // Method to set the affinity of a process
-    public void setaffinity(int size, int[] a) throws Exception {
-    	int retval = ctest._setaffinity(size, a);
-    	process_retval(retval);
-    }
-    
     public void setaffinity_thread(int pid, int size, int[] a) throws Exception {
     	int retval = ctest._setaffinity_thread(pid, size, a);
     	process_retval(retval);
-    }
-
-    // Method to get the affinity of a process
-    public void getaffinity(int tid, int size, int[] a) throws Exception {
-    	int retval = ctest._getaffinity(tid, size);
-    	process_retval(retval);
-    }
-    
-    static public void main(String argv[]) throws Exception {
-
     }
 }
