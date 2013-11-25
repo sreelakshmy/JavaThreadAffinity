@@ -7,7 +7,6 @@ int _setaffinity_process(int pid, int n, int *masks) {
   int i;
   int retval=0;
 
-  printf("DEBUG: Making call to sched_setaffinity with arguments pid=%d\n", pid);
   cpu_set_t  mask;
 
   CPU_ZERO(&mask);

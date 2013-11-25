@@ -12,7 +12,10 @@ public class ThreadAffinityMultiUser implements Runnable{
 		try {
 			Thread currThread = Thread.currentThread();
 			t.setaffinity_process(0, this.processors.length, this.processors);
-			System.out.println("[+] For thread " + currThread.getName() + " the cpu is " + t.sched_getcpu());
+			for ( int i = 0; i < 5; i++ ) {
+				System.out.println("[+] For thread " + currThread.getName() + " the cpu is " + t.sched_getcpu());
+				Thread.sleep(4);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
