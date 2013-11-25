@@ -17,7 +17,7 @@ public class ThreadAffinity {
     public interface CTest extends Library {
         public void helloFromC(long i);
         public int _setaffinity(int size, int[] a);
-        public int _setaffinity_process(int pid, int size, int[] a);
+        public int _setaffinity_thread(int pid, int size, int[] a);
         public int _getaffinity(int tid, int cpusetsize);
         public int _getcpu();
         public int _getpid();
@@ -61,8 +61,8 @@ public class ThreadAffinity {
     	process_retval(retval);
     }
     
-    public void setaffinity_process(int pid, int size, int[] a) throws Exception {
-    	int retval = ctest._setaffinity_process(pid, size, a);
+    public void setaffinity_thread(int pid, int size, int[] a) throws Exception {
+    	int retval = ctest._setaffinity_thread(pid, size, a);
     	process_retval(retval);
     }
 

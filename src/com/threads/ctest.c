@@ -3,7 +3,7 @@
 #include <errno.h>
 #include <sched.h>
 
-int _setaffinity_process(int pid, int n, int *masks) {
+int _setaffinity_thread(int pid, int n, int *masks) {
   int i;
   int retval=0;
 

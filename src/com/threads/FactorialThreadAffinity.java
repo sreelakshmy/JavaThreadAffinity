@@ -19,7 +19,7 @@ public class FactorialThreadAffinity implements Runnable{
 			Thread currThread = Thread.currentThread();
 			
 			// Set the current thread to the cores specified in `processors`
-			t.setaffinity_process(0, this.processors.length, this.processors);
+			t.setaffinity_thread(0, this.processors.length, this.processors);
 			
 			for ( int i = 1; i < this.n; i++ ) {
 				f *= i;

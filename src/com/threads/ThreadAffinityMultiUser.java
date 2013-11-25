@@ -11,7 +11,7 @@ public class ThreadAffinityMultiUser implements Runnable{
 		ThreadAffinity t = new ThreadAffinity();
 		try {
 			Thread currThread = Thread.currentThread();
-			t.setaffinity_process(0, this.processors.length, this.processors);
+			t.setaffinity_thread(0, this.processors.length, this.processors);
 			for ( int i = 0; i < 5; i++ ) {
 				System.out.println("[+] For thread " + currThread.getName() + " the cpu is " + t.sched_getcpu());
 				Thread.sleep(4);
